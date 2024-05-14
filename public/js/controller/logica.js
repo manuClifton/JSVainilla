@@ -187,7 +187,7 @@ export function modificarMascota(mascota){
 
 
 export function actualizarLista(listaMascotas){
-    divTabla.innerHTML = "<img src='image/spinner.gif' style=' margin-top: 5vw;' class='text.center' >";
+    divTabla.innerHTML = "<img src='./image/spinner.gif' style=' margin-top: 5vw;' class='text.center' >";
     setTimeout(() => {
         while (divTabla.firstChild) {
             divTabla.removeChild(divTabla.lastChild);

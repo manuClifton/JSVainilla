@@ -101,7 +101,6 @@ app.delete('/mascotas/:id', (req, res) => {
     });
 });
 
-/* 
 app.put('/mascotas/:id', (req, res) => {
     const idMascota = req.params.id;
     const nuevaMascota = req.body; // La nueva información de la mascota a editar
@@ -137,7 +136,7 @@ app.put('/mascotas/:id', (req, res) => {
         });
     });
 });
-*/
+
 
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
