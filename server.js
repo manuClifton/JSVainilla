@@ -60,6 +60,43 @@ app.post('/mascotas', (req, res) => {
     });
 });
 
+
+app.delete('/mascotas/:id', (req, res) => {
+    const idMascota = req.params.id;
+    console.log('ID mascota recibida:', idMascota);
+
+    const ruta = req.path; // Obtener la ruta completa, incluyendo los parámetros
+    console.log('Ruta DELETE recibida:', ruta); // Imprimir la ruta completa
+
+    // leo el archivo db.json
+    fs.readFile('db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error al leer el archivo db.json:', err);
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
+
+        // Parsear el contenido del archivo JSON a un objeto JavaScript
+        let dato = JSON.parse(data);
+            console.log('ID mascota recibida:', dato);
+
+        // Buscar la mascota por su ID y eliminarla
+        dato.mascotas = dato.mascotas.filter(mascota => mascota.id !== idMascota);
+
+        // Escribir el contenido actualizado de vuelta al archivo db.json
+        fs.writeFile('db.json', JSON.stringify(dato), 'utf8', err => {
+            if (err) {
+                console.error('Error al escribir en el archivo db.json:', err);
+                return res.status(500).json({ error: 'Error interno del servidor' });
+            }
+            
+            res.status(200).json({ mensaje: 'Mascota eliminada correctamente' });
+        });
+    });
+});
+
+
+
+
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });

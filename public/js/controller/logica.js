@@ -5,7 +5,7 @@ import {
     limpiar
 } from '../entidades/tabla.js';
 
-const URL = "http://localhost:8350/mascotas/";
+const URL = "http://localhost:8350/mascotas";
 //const URL = "db.json"; 
 
 export function obtenerMascotasXhr(){
@@ -77,12 +77,12 @@ export function altaMascota(frm){
         body: JSON.stringify(nuevaMascota)
     };
 
-    return fetch(URL, config)
+    return fetch(URL, config)  //POST con configuracion y datos
     .then((response)=>{
         if(!response.ok) {
             throw new Error(`Error al agregar la mascota: ${response.status} - ${response.statusText}`);
         }
-        return response.json();
+        return response.json(); //devuelve una promesa que es no bloqueante
     })
     .then((mascotaAgregada)=>{
         console.log("Mascota agregada correctamente:", mascotaAgregada);
@@ -154,7 +154,6 @@ export function bajaMascotaXhr(id){
     } catch ( err ) {
         throw { status: err.status, statusText: err.statusText };
     }
-
 }
 
 
