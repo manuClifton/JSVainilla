@@ -4,6 +4,8 @@ const fs = require('fs');
 const uuid = require('uuid');
 const PORT = 8350;
 
+const cors = require('cors');
+app.use(cors());
 // Middleware para analizar el cuerpo de las solicitudes como JSON
 app.use(express.json());
 
