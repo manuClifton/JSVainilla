@@ -13,7 +13,7 @@ const cors = require('cors');
 app.use(cors());
 
 app.use((req, res, next) => {
-    res.setHeader('Content-Security-Policy', "default-src 'self' https://vercel.live;");
+    res.setHeader('Content-Security-Policy', "default-public 'self' https://vercel.live;");
     next();
 });
 // Ruta para manejar solicitudes GET a /mascotas/
