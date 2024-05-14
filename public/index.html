@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *;**script-src 'self' http://onlineerp.solution.quebec 'unsafe-inline' 'unsafe-eval';** ">
     
     
     <meta http-equiv="Content-Security-Policy" content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
@@ -31,7 +28,87 @@
     </header>
 
 
-   
+    <section id="ruleta" style="display: none;">
+        <div id="Tragamonedas" 
+        style="width: 40vw; height: 70vh; background-color: rgb(151, 151, 151); display:inline-block; position:fixed; margin-left: 250px;; 
+                padding: 25px; border-radius: 10px; border: 3px dashed rgb(83, 83, 83); 
+
+                "
+        >
+        <div style="margin-left: 150px;">
+            <div id="valores"  style="width: 25vw; background-color: blue; color: antiquewhite;">
+                Monto: <input id="monto" type="text" value="1000">
+                Ganancia <input id="ganancia" type="text" value="0" disabled>
+            </div>
+            <div id="slots">
+                <div style="display: flex;">
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                </div>
+                <div style="display: flex;">
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                </div>
+                <div style="display: flex;">
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                </div>
+            </div>
+           
+           
+
+            <div id="apuesta"  style="width: 25vw;  background-color: blue; color: antiquewhite;">
+                <div style="display: flex; justify-content:space-around;">
+                    <div>
+                        <label for="apuesta">Apuesta</label>
+                        <select name="apuesta" id="seleccionApuesta">
+                            <option value="10">10</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="1000">1000</option>
+                        </select>
+                    </div>
+
+                    <button id="spin-button" style="background: greenyellow; width: 70%;">Tirar</button>
+                </div>
+            </div>
+        </div>
+        <div style="width: 25vw; height: 20vh; margin-left: 150px; margin-top: 10px; border: 1px solid rgb(198, 242, 67);
+                background-color: rgb(198, 198, 198);
+        ">
+            <ul style="list-style: none;">
+                <li>
+                    <span style="margin-right: 40px;">🍎🍎🍎  100</span>
+                    <span style="margin-right: 40px;">🍊🍊🍊 100</span>
+                    <span >🍇🍇🍇  200</span>
+                </li>
+                <li>
+                    <span style="margin-right: 40px;">🍓🍓🍓 300</span>
+                    <span style="margin-right: 40px;">🍒🍒🍒 500</span>
+                    <span >🍉🍉🍉  700</span>
+                </li>
+                <li>
+                    <span style="margin-right: 40px;">🌶️🌶️🌶️ 750</span>
+                    <span style="margin-right: 40px;">🍕🍕🍕 800</span>
+                    <span >🍄🍄🍄  850</span>
+                </li>
+                <li>
+                    <span style="margin-right: 40px;">🔥🔥🔥 900</span>
+                    <span style="margin-right: 40px;">💣💣💣 950</span>
+                    <span >💰💰💰  1000</span>
+                </li>
+                <hr>
+                <li>
+                    <span style="margin-left: 150px;">🏆 bonus</span>
+                </li>
+            </ul>
+            <button id="spin-button" style="background: goldenrod; width: 100%;">Retirar</button>
+        </div>
+    </div>
+    </section>
 
     <div id="formularioPrincipal">
         <section>
