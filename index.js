@@ -4,13 +4,13 @@ const fs = require('fs');
 const uuid = require('uuid');
 const PORT = 8350;
 
-const cors = require('cors');
-app.use(cors());
 // Middleware para analizar el cuerpo de las solicitudes como JSON
 app.use(express.json());
 
 app.use(express.static('public'));
 
+const cors = require('cors');
+app.use(cors());
 // Ruta para manejar solicitudes GET a /mascotas/
 app.get('/mascotas', (req, res) => {
     // Lee el contenido del archivo db.json
