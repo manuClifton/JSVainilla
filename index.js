@@ -11,6 +11,11 @@ app.use(express.static('public'));
 
 const cors = require('cors');
 app.use(cors());
+
+app.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', "default-src 'self' https://vercel.live;");
+    next();
+});
 // Ruta para manejar solicitudes GET a /mascotas/
 app.get('/mascotas', (req, res) => {
     // Lee el contenido del archivo db.json
