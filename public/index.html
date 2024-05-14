@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/styleRuleta.css">
     <script src="./js/script.js" type="module" defer></script>
+    <script src="./js/ruleta.js" type="module" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
     <title>Parcial 2 Tema 5</title>
@@ -15,252 +17,336 @@
 
         <nav>
             <ul>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Anuncios</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#" class="mostrarFormulario">Formulario</a></li>
+                <li><a href="#" class="mostrarRuleta">Ruleta</a></li>
             </ul>
         </nav>
     </header>
 
-    <section>
-        <p class="importante">
-            <em>Administración</em>
-        </p>
-        <!-- <div id="img">
+    <section id="ruleta" style="display: none;">
+        <div id="Tragamonedas" 
+        style="width: 40vw; height: 70vh; background-color: rgb(151, 151, 151); display:inline-block; position:fixed; margin-left: 250px;; 
+                padding: 25px; border-radius: 10px; border: 3px dashed rgb(83, 83, 83); 
 
-        </div>-->
+                "
+        >
+        <div style="margin-left: 150px;">
+            <div id="valores"  style="width: 25vw; background-color: blue; color: antiquewhite;">
+                Monto: <input id="monto" type="text" value="1000">
+                Ganancia <input id="ganancia" type="text" value="0" disabled>
+            </div>
+            <div id="slots">
+                <div style="display: flex;">
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                </div>
+                <div style="display: flex;">
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                </div>
+                <div style="display: flex;">
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                </div>
+            </div>
+           
+           
+
+            <div id="apuesta"  style="width: 25vw;  background-color: blue; color: antiquewhite;">
+                <div style="display: flex; justify-content:space-around;">
+                    <div>
+                        <label for="apuesta">Apuesta</label>
+                        <select name="apuesta" id="seleccionApuesta">
+                            <option value="10">10</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="1000">1000</option>
+                        </select>
+                    </div>
+
+                    <button id="spin-button" style="background: greenyellow; width: 70%;">Tirar</button>
+                </div>
+            </div>
+        </div>
+        <div style="width: 25vw; height: 20vh; margin-left: 150px; margin-top: 10px; border: 1px solid rgb(198, 242, 67);
+                background-color: rgb(198, 198, 198);
+        ">
+            <ul style="list-style: none;">
+                <li>
+                    <span style="margin-right: 40px;">🍎🍎🍎  100</span>
+                    <span style="margin-right: 40px;">🍊🍊🍊 100</span>
+                    <span >🍇🍇🍇  200</span>
+                </li>
+                <li>
+                    <span style="margin-right: 40px;">🍓🍓🍓 300</span>
+                    <span style="margin-right: 40px;">🍒🍒🍒 500</span>
+                    <span >🍉🍉🍉  700</span>
+                </li>
+                <li>
+                    <span style="margin-right: 40px;">🌶️🌶️🌶️ 750</span>
+                    <span style="margin-right: 40px;">🍕🍕🍕 800</span>
+                    <span >🍄🍄🍄  850</span>
+                </li>
+                <li>
+                    <span style="margin-right: 40px;">🔥🔥🔥 900</span>
+                    <span style="margin-right: 40px;">💣💣💣 950</span>
+                    <span >💰💰💰  1000</span>
+                </li>
+                <hr>
+                <li>
+                    <span style="margin-left: 150px;">🏆 bonus</span>
+                </li>
+            </ul>
+            <button id="spin-button" style="background: goldenrod; width: 100%;">Retirar</button>
+        </div>
+    </div>
     </section>
-   
 
-   <!--   FORMULARIO    -->
-    <section class="contain" id="dataIn">
-        <form  class="formulario" id="formPersona">           
-            <label for="titulo">Titulo </label>
-            <input 
-                type="text"
-                name="titulo"
-                id="titulo"
-                placeholder="Ingrese Titulo"
-                data-validation="alphanumeric"
-                required
-            >
-            <label for="descripcion">Descripcion</label>
-            <input
-                type="text"
-                name="descripcion"
-                id="descripcion"
-                placeholder="Ingrese Descripcion"
-                data-validation="alphanumeric"
-                required
-            >
-            <fieldset>
-                <legend>ANIMAL</legend>
-                <label for="rdoP">
-                    <input
-                        type="radio"
-                        name="animal"
-                        id="" 
-                        value="perro"
-                        checked
-                    >
-                     PERRO
-                 </label>
-
-                 <label for="rdoG">
-                    <input
-                        type="radio"
-                        name="animal"
-                        id="" 
-                        value="gato"
-                        checked
-                    >
-                     GATO
-                 </label>
-
-            </fieldset>
-
-
-            <label for="precio">Precio</label>
-            <input 
-                type="number"
-                name="precio"
-                id="precio"
-                placeholder="Ingrese Precio"
-                data-validation="number"
-                required
-            >
-            <div id="raza">
-                <label for="raza"><img src="image/noun_Animal_3354913.png" alt=""></label>
+    <div id="formularioPrincipal">
+        <section>
+            <p class="importante">
+                <em>Administración</em>
+            </p>
+            <!-- <div id="img">
+    
+            </div>-->
+        </section>
+       
+    
+       <!--   FORMULARIO    -->
+        <section class="contain" id="dataIn">
+            <form  class="formulario" id="formPersona">           
+                <label for="titulo">Titulo </label>
                 <input 
                     type="text"
-                    name="raza"
-                    id="raza"
-                    placeholder="Raza"
+                    name="titulo"
+                    id="titulo"
+                    placeholder="Ingrese Titulo"
+                    data-validation="alphanumeric"
                     required
                 >
-                <label for="fecha"><img src="image/noun_amun ra_3354917.png" alt=""></label>
-                <input 
-                    type="date"
-                    name="fecha"
-                    id="fecha"
-                    placeholder="Fecha"
+                <label for="descripcion">Descripcion</label>
+                <input
+                    type="text"
+                    name="descripcion"
+                    id="descripcion"
+                    placeholder="Ingrese Descripcion"
+                    data-validation="alphanumeric"
                     required
                 >
-                <label for="vacuna"><img src="image/noun_Hospital_3214434.png" alt=""></label>
-                <select name="vacuna" id="">
-                    <option name="vacuna" value="si">Si</option>
-                    <option name="vacuna" value="no">No</option>
-
-                </select>
-            </div>
-
-            
-            <div>
-                <button id="btnAdd" type="submit" class="boton btnAdd">
-                    <i class="fa  fa-floppy-o fa-2x" ></i>
-                    Guardar
-                </button>
-                <button id="btnEdit" type="submit" class="boton btnEdit ocultarBtn">Editar</button>
-                <button id="btnCancel" class=" boton ocultarBtn">Cancelar</button>
-                <button id="btnDelete" class="boton btnDelete ocultarBtn">Eliminar</button>
-            </div>
-        </form>
-    </section>
-
-    <!--      FILTRO           -->
-    <section class="container mt-3 p-5 ">
-        <div class="row justify-content-center ">
-            <div class="col-md-10 rounded-pill bg bg-info">
-                <h2 class="text-center">FILTROS</h2>
-                
-                <form>
-                    <div class="form-row">
-                      <div class="col pl-3">
-                        <label for="filtrar"> Filtrar por:</label>
-                        <select name="filtrar" id="filtro" class="form-control">
-                            <option name="filtrar" value="todos">Todos</option>
-                            <option name="filtrar" value="perro">Perro</option>
-                            <option name="filtrar" value="gato">Gato</option>
-                        </select>
-                      </div>
-                      <div class="col">
-                        <label for="promedio">Promedio</label>
-                        <input 
-                            type="number"
-                            name="promedio"
-                            id="promedio"
-                            class="form-control"
-                            disabled
+                <fieldset>
+                    <legend>ANIMAL</legend>
+                    <label for="rdoP">
+                        <input
+                            type="radio"
+                            name="animal"
+                            id="" 
+                            value="perro"
+                            checked
                         >
-                      </div>
-                    </div>
-                  </form>
-        
+                         PERRO
+                     </label>
+    
+                     <label for="rdoG">
+                        <input
+                            type="radio"
+                            name="animal"
+                            id="" 
+                            value="gato"
+                            checked
+                        >
+                         GATO
+                     </label>
+    
+                </fieldset>
+    
+    
+                <label for="precio">Precio</label>
+                <input 
+                    type="number"
+                    name="precio"
+                    id="precio"
+                    placeholder="Ingrese Precio"
+                    data-validation="number"
+                    required
+                >
+                <div id="raza">
+                    <label for="raza"><img src="image/noun_Animal_3354913.png" alt=""></label>
+                    <input 
+                        type="text"
+                        name="raza"
+                        id="raza"
+                        placeholder="Raza"
+                        required
+                    >
+                    <label for="fecha"><img src="image/noun_amun ra_3354917.png" alt=""></label>
+                    <input 
+                        type="date"
+                        name="fecha"
+                        id="fecha"
+                        placeholder="Fecha"
+                        required
+                    >
+                    <label for="vacuna"><img src="image/noun_Hospital_3214434.png" alt=""></label>
+                    <select name="vacuna" id="">
+                        <option name="vacuna" value="si">Si</option>
+                        <option name="vacuna" value="no">No</option>
+    
+                    </select>
+                </div>
+    
+                
+                <div>
+                    <button id="btnAdd" type="submit" class="boton btnAdd">
+                        <i class="fa  fa-floppy-o fa-2x" ></i>
+                        Guardar
+                    </button>
+                    <button id="btnEdit" type="submit" class="boton btnEdit ocultarBtn">Editar</button>
+                    <button id="btnCancel" class=" boton ocultarBtn">Cancelar</button>
+                    <button id="btnDelete" class="boton btnDelete ocultarBtn">Eliminar</button>
+                </div>
+            </form>
+        </section>
+    
+        <!--      FILTRO           -->
+        <section class="container mt-3 p-5 ">
+            <div class="row justify-content-center ">
+                <div class="col-md-10 rounded-pill bg bg-info">
+                    <h2 class="text-center">FILTROS</h2>
+                    
+                    <form>
+                        <div class="form-row">
+                          <div class="col pl-3">
+                            <label for="filtrar"> Filtrar por:</label>
+                            <select name="filtrar" id="filtro" class="form-control">
+                                <option name="filtrar" value="todos">Todos</option>
+                                <option name="filtrar" value="perro">Perro</option>
+                                <option name="filtrar" value="gato">Gato</option>
+                            </select>
+                          </div>
+                          <div class="col">
+                            <label for="promedio">Promedio</label>
+                            <input 
+                                type="number"
+                                name="promedio"
+                                id="promedio"
+                                class="form-control"
+                                disabled
+                            >
+                          </div>
+                        </div>
+                      </form>
+            
+                </div>
             </div>
-        </div>
-    </section>
-
-       <!--  SELECCION Y CHECKS     
-       <section class="container">
-        <div class="row justify-content-center ">
-            <div class="col-md-12 bg bg-warning">
-                <h2 class="text-center">Campos Mostrados: Tildar los campos a mostrar</h2>
-                <hr>
-
-                <form>
-
-                    <div class="container">
-                        <div class="row text-center custom-control custom-checkbox" id="contenedor-checkboxs">
-
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input
-                                type="checkbox"
-                                class="cbox custom-control-input"
-                                id="cboxId"
-                                value="id"
-                                checked >
-                                <label class="custom-control-label" for="cboxId">Id</label>
-                            </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="cbox custom-control-input" id="cboxTitulo" value="titulo" checked >
-                                <label class="custom-control-label" for="cboxTitulo">Titulo</label>
-                            </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input
-                                type="checkbox"
-                                class="cbox custom-control-input"
-                                id="cboxTransaccion"
-                                value="transaccion" 
-                                checked >
-                                <label class="custom-control-label" for="cboxTransaccion">Transaccion</label>
-                            </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input 
-                                type="checkbox" 
-                                class="cbox custom-control-input" 
-                                id="cboxDescripcion" 
-                                value="descripcion" 
-                                checked >
-                                <label class="custom-control-label" for="cboxDescripcion">Descripcion</label>
-                            </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" 
-                                class="cbox custom-control-input" 
-                                id="cboxPrecio" 
-                                value="precio" 
-                                checked >
-                                <label class="custom-control-label" for="cboxPrecio">Precio</label>
-                            </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input 
-                                type="checkbox" 
-                                class="cbox custom-control-input" 
-                                id="cboxAnimal" 
-                                value="animal" 
-                                checked >
-                                <label class="custom-control-label" for="cboxAnimal">Animal</label>
-                            </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" 
-                                class="cbox custom-control-input" 
-                                id="cboxRaza" 
-                                value="raza" 
-                                checked>
-                                <label class="custom-control-label" for="cboxRaza">Raza</label>
-                            </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" 
-                                class="cbox custom-control-input" 
-                                id="cboxFecha" 
-                                value="decha" 
-                                checked >
-                                <label class="custom-control-label" for="cboxFecha">Fecha</label>
-                            </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" 
-                                class="cbox custom-control-input" 
-                                id="cboxVacuna" 
-                                value="vacuna" 
-                                checked >
-                                <label class="custom-control-label" for="cboxVacuna">Vacuna</label>
+        </section>
+    
+           <!--  SELECCION Y CHECKS     
+           <section class="container">
+            <div class="row justify-content-center ">
+                <div class="col-md-12 bg bg-warning">
+                    <h2 class="text-center">Campos Mostrados: Tildar los campos a mostrar</h2>
+                    <hr>
+    
+                    <form>
+    
+                        <div class="container">
+                            <div class="row text-center custom-control custom-checkbox" id="contenedor-checkboxs">
+    
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input
+                                    type="checkbox"
+                                    class="cbox custom-control-input"
+                                    id="cboxId"
+                                    value="id"
+                                    checked >
+                                    <label class="custom-control-label" for="cboxId">Id</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="cbox custom-control-input" id="cboxTitulo" value="titulo" checked >
+                                    <label class="custom-control-label" for="cboxTitulo">Titulo</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input
+                                    type="checkbox"
+                                    class="cbox custom-control-input"
+                                    id="cboxTransaccion"
+                                    value="transaccion" 
+                                    checked >
+                                    <label class="custom-control-label" for="cboxTransaccion">Transaccion</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input 
+                                    type="checkbox" 
+                                    class="cbox custom-control-input" 
+                                    id="cboxDescripcion" 
+                                    value="descripcion" 
+                                    checked >
+                                    <label class="custom-control-label" for="cboxDescripcion">Descripcion</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" 
+                                    class="cbox custom-control-input" 
+                                    id="cboxPrecio" 
+                                    value="precio" 
+                                    checked >
+                                    <label class="custom-control-label" for="cboxPrecio">Precio</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input 
+                                    type="checkbox" 
+                                    class="cbox custom-control-input" 
+                                    id="cboxAnimal" 
+                                    value="animal" 
+                                    checked >
+                                    <label class="custom-control-label" for="cboxAnimal">Animal</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" 
+                                    class="cbox custom-control-input" 
+                                    id="cboxRaza" 
+                                    value="raza" 
+                                    checked>
+                                    <label class="custom-control-label" for="cboxRaza">Raza</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" 
+                                    class="cbox custom-control-input" 
+                                    id="cboxFecha" 
+                                    value="decha" 
+                                    checked >
+                                    <label class="custom-control-label" for="cboxFecha">Fecha</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" 
+                                    class="cbox custom-control-input" 
+                                    id="cboxVacuna" 
+                                    value="vacuna" 
+                                    checked >
+                                    <label class="custom-control-label" for="cboxVacuna">Vacuna</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
-    </section>
--->
-
-    <!--     TABLA       -->
-    <section class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-12" id="divTabla">
-
+        </section>
+    -->
+    
+        <!--     TABLA       -->
+        <section class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-12" id="divTabla">
+    
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+
+
 
 
 
@@ -269,10 +355,8 @@
     <footer class="footer">
         <nav>
             <ul>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Anuncios</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacto</a></li>
+                <h3>Esto es un footer</H3>
+                <li><a href="#" class="">IR ARRIBA</a></li>
             </ul>
         </nav>
         <p>

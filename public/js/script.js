@@ -144,11 +144,22 @@ async function filtrarColumnas( check, listaMascotas ) {
     });
 };
 
+const mostrarFormulario = document.querySelector('.mostrarFormulario');
+const mostrarRuleta = document.querySelector('.mostrarRuleta');
 
+mostrarFormulario.addEventListener('click', () => {
+    // Mostrar el formulario
+    formularioPrincipal.style.display = 'block';
+    // Ocultar la sección ruleta
+    ruleta.style.display = 'none';
+});
 
-
-
-
+mostrarRuleta.addEventListener('click', () => {
+    // Mostrar el formulario
+    ruleta.style.display = 'block';
+    // Ocultar la sección ruleta
+    formularioPrincipal.style.display = 'none';
+});
 
 
 

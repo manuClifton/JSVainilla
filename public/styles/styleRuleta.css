@@ -1,0 +1,15 @@
+#slots {
+    display: flex;
+    flex-direction: column;
+    
+    margin-left: 75px;
+  }
+  
+  .slot {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    text-align: center;
+    font-size: 75px;
+    margin: 5px;
+  }
