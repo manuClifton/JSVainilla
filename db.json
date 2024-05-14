@@ -47,11 +47,21 @@
       "titulo": "Mi Mascota",
       "descripcion": "Una mascota muy linda",
       "precio": 7000,
-      "animal": "Perro",
+      "animal": "perro",
       "raza": "Labrador",
       "fecha": "2024-05-28",
       "vacuna": true,
       "id": "dbb99b80-5df8-4e47-ad7b-05300faced45"
+    },
+    {
+      "titulo": "Prueba de ingreso al formulario",
+      "descripcion": "es una prueba",
+      "precio": 8000,
+      "animal": "gato",
+      "raza": "Calle",
+      "fecha": "2024-05-03",
+      "vacuna": "no",
+      "id": "e77adc4a-2b9c-4eb0-838e-dc7bbba370a6"
     }
   ]
 }
