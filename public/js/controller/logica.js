@@ -170,7 +170,7 @@ export function modificarMascota(mascota){
         body: JSON.stringify(mascota)
     }
 
-    fetch(URL + id, config) //PUT con configuracion y datos
+    fetch(URL + '/' + id, config) //PUT con configuracion y datos
     .then((response)=>{
         if(!response.ok) return Promise.reject(response); //retorna una promesa fallida
         return response.json(); //devuelve una promesa que es no bloqueante

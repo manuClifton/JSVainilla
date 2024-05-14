@@ -94,7 +94,41 @@ app.delete('/mascotas/:id', (req, res) => {
     });
 });
 
+app.put('/mascotas/:id', (req, res) => {
+    const idMascota = req.params.id;
+    const nuevaMascota = req.body; // La nueva información de la mascota a editar
+    console.log('Nueva información de la mascota:', nuevaMascota);
+    const ruta = req.path; // Obtener la ruta completa, incluyendo los parámetros
+    console.log('Ruta put recibida:', ruta); // Imprimir la ruta complet
+    // Leer el contenido actual del archivo db.json
+    fs.readFile('db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error al leer el archivo db.json:', err);
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
 
+        // Parsear el contenido del archivo JSON a un objeto JavaScript
+        let mascotas = JSON.parse(data);
+
+        // Encontrar la mascota por su ID y actualizarla con la nueva información
+        const index = mascotas.findIndex(mascota => mascota.id === idMascota);
+        if (index !== -1) {
+            mascotas[index] = nuevaMascota; // Reemplazar la mascota existente con la nueva información
+        } else {
+            return res.status(404).json({ error: 'Mascota no encontrada' });
+        }
+
+        // Escribir el contenido actualizado de vuelta al archivo db.json
+        fs.writeFile('db.json', JSON.stringify(mascotas), 'utf8', err => {
+            if (err) {
+                console.error('Error al escribir en el archivo db.json:', err);
+                return res.status(500).json({ error: 'Error interno del servidor' });
+            }
+            
+            res.status(200).json({ mensaje: 'Mascota actualizada correctamente' });
+        });
+    });
+});
 
 
 app.listen(PORT, () => {
