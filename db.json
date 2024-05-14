@@ -1,0 +1,57 @@
+{
+  "mascotas": [
+    {
+      "titulo": "Con un 6",
+      "transaccion": "ventas",
+      "descripcion": "Me conformo",
+      "precio": 5000,
+      "animal": "gato",
+      "raza": "siames",
+      "fecha": "2020-09-05",
+      "vacuna": "si",
+      "id": 102
+    },
+    {
+      "titulo": "Me conformo",
+      "transaccion": "ventas",
+      "descripcion": "Cinco",
+      "precio": 5000,
+      "animal": "perro",
+      "raza": "doverman",
+      "fecha": "2020-10-31",
+      "vacuna": "no",
+      "id": 105
+    },
+    {
+      "titulo": "Gatito",
+      "descripcion": "roronronro",
+      "precio": 7500,
+      "animal": "gato",
+      "raza": "doverman",
+      "fecha": "2020-11-20",
+      "vacuna": "no",
+      "id": 106
+    },
+    {
+      "titulo": "Canela",
+      "transaccion": "ventas",
+      "descripcion": "canelon",
+      "precio": 2350,
+      "animal": "gato",
+      "raza": "bulldog",
+      "fecha": "2020-11-12",
+      "vacuna": "no",
+      "id": 108
+    },
+    {
+      "titulo": "Mi Mascota",
+      "descripcion": "Una mascota muy linda",
+      "precio": 7000,
+      "animal": "Perro",
+      "raza": "Labrador",
+      "fecha": "2024-05-28",
+      "vacuna": true,
+      "id": "dbb99b80-5df8-4e47-ad7b-05300faced45"
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+
+*{
+    margin: 0;
+    /*box-sizing: content-box;*/
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.header, .footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 1vw;
+    background-color: rgb(224, 103, 4);
+}
+.header{
+    position: sticky; /* queda clavado en el top 0 */
+    top: 0;
+}
+.footer{
+margin-top: 20%;
+}
+
+.header img{
+     width: 60px;
+ }
+
+ /*         NAVBAR                 */
+nav ul{
+    display: flex;
+    list-style-type: none;
+    padding-left: 0;
+}
+nav li{
+    margin: 10px 20px;
+}
+nav a{
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.importante{
+    margin: 0;
+    background-color: palegoldenrod;
+    padding: 10px;
+    text-align: center;
+    font-size: 4vw;
+}
+
+#img{
+        width: 100%;
+        height: 500px;
+        background-color: khaki;
+        background-image: url(../image/foto.jpg);
+        /*background-repeat: no-repeat;*/
+        background-position: center;
+        background-size: cover;
+
+}
+
+/*   FORMULARIO */
+
+.contain{
+    display: flex;
+    justify-content: center;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 20px;
+    width: 55vw;
+    border: 1px solid rgb(124, 124, 124);
+    border-radius: 2px;
+    box-shadow: 0px 0px 10px gray; 
+    font-size: 18px!important;
+}
+.formulario #raza{
+    display: flex;
+}
+#raza img{
+    width: 30px;
+}
+
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="date"],
+select,
+fieldset{
+    margin-left: 15px;
+    padding: 5px;
+    border-radius: 2px;
+    border-color: #ccc;
+    border: 1px solid #ccc;
+    width: 90%;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 2px gray; 
+}
+label{
+    margin-left: 15px;
+}
+
+/*       BOTONES         */
+.boton{
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 2px gray; 
+    color: rgb(90, 89, 89);
+    cursor: pointer;
+    margin-right: 10px;
+    display: inline;
+}
+
+
+.btnAdd{
+    background: rgb(93, 197, 110);
+}
+button i{
+    width: 30px;
+}
+.btnAdd:hover{
+    background: rgb(55, 116, 65);
+    color: rgb(255, 255, 255);
+}
+
+.btnEdit{
+    background: rgb(143, 159, 230);
+}
+.btnEdit:hover{
+    background: rgb(92, 90, 190);
+    color: rgb(255, 255, 255);
+}
+.btnDelete{
+    background: rgb(250, 123, 123);
+}
+.btnDelete:hover{
+    background: rgb(179, 50, 50);
+    color: rgb(255, 255, 255);
+}
+
+.ocultarBtn{
+    display: none;
+}
+
+/*      FILTROS     */
+#filtro{
+    margin-left: 15px;
+    padding: 5px;
+    border-radius: 2px;
+    border-color: #ccc;
+    border: 1px solid #ccc;
+    width: 50%;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 2px gray; 
+}
+
+
+/*      CAMPOS CHECK          */
+
+form input[type="checkbox"]{
+    display: inline;
+}
+
+/*      TABLA            
+table{
+    border-collapse: collapse;
+    margin: 3vw;
+}
+table, th,td{
+    border: 2px solid rgba(0, 0, 0, 0.575);
+    padding: 1vw;
+}
+th{
+    background-color: rgba(137, 43, 226, 0.5);
+    font-size: 20px;
+}
+
+tr:nth-of-type(odd){
+    background-color: rgba(255, 0, 0, 0.192);
+}
+tr:hover{
+    background-color: rgba(255, 0, 0, 0.473);
+    cursor: pointer;
+}
+*/
+
+@media (max-width: 800px){
+    header, footer{
+    flex-direction: column;
+    justify-content: center;
+    }
+    header img{
+        align-self: center;
+    }
+}
+
