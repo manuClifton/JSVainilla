@@ -5,13 +5,11 @@ import {
     limpiar
 } from '../entidades/tabla.js';
 
-const URL = "http://localhost:8350/mascotas";
-//const URL = "db.json"; 
+const URL = "https://test-sergicode.netlify.app/.netlify/functions/index/mascotas";
+
 
 export function obtenerMascotasXhr(){
-
     return new Promise( (resolve, reject)=>{
-      
         const xhr = new XMLHttpRequest();
         let datos= [];
         console.log('Contenido de datos:', datos);
@@ -21,12 +19,9 @@ export function obtenerMascotasXhr(){
                 if(xhr.status >= 200 && xhr.status < 300){
                     //Si todo sale bien
                     datos = JSON.parse(xhr.responseText);
-    
                     const mascotas = [];
-
-                    if(typeof datos === 'object' && datos !== null){
-                        if (Array.isArray(datos.mascotas)) {
-                            datos.mascotas.forEach(element => {
+                        if (Array.isArray(datos)) {
+                            datos.forEach(element => {
                                 const mascotaOrdenada = new Anuncio_Mascota(
                                     element.id,
                                     element.titulo,
@@ -40,11 +35,7 @@ export function obtenerMascotasXhr(){
                                 mascotas.push(mascotaOrdenada);
                             });
                         }
-                    }
-                   
-                    
                     resolve(mascotas);
-    
                 }else{
                     //salio todo mal
                     let mensaje = xhr.statusText || "Se produjo un ERROR";
@@ -53,7 +44,6 @@ export function obtenerMascotasXhr(){
             }
         });
         xhr.open('GET', URL);
-
         xhr.send();
     })
 }
@@ -94,44 +84,35 @@ export function altaMascota(frm){
     });
 }
 
-/*
-export function altaMascota(frm){
-    const nuevaMascota = {
-        "titulo": frm.titulo.value,
-        "descripcion": frm.descripcion.value,
-        "precio": parseInt(frm.precio.value),
-        "animal":frm.animal.value,
-        "raza": frm.raza.value,
-        "fecha": frm.fecha.value,
-        "vacuna": frm.vacuna.value
-    }
-    const config = {
-        method: 'POST',
-        headers: {
-            "Content-type": "application/json;charset=utf-8"
-        },
-        body: JSON.stringify(nuevaMascota)
-    }
-
-    return fetch(URL,config) //POST con configuracion y datos
-    .then((response)=>{
-        if(!response.ok) return Promise.reject(response); //retorna una promesa fallida
-        return response.json(); //devuelve una promesa que es no bloqueante
-    })
-    .then((mascotaAgregada)=>{
-        console.log("ENTRE AL ALTA ", mascotaAgregada);
-       return true;
-    })
-    .catch((err)=>{
-        console.error(err.status);
-    })
-}
-
- */
-
-
 export function bajaMascotaXhr(id){
     try {
+        return new Promise( async ( resolve, reject ) => {
+            const xhr = new XMLHttpRequest();
+            xhr.addEventListener( 'readystatechange', () => {
+                if ( xhr.readyState == 4 ) {
+                    if ( xhr.status >= 200 && xhr.status < 300 ) {
+                        resolve( true );
+                    } else {
+                        let mensaje = xhr.statusText || 'Se produjo un ERROR';
+                        reject(  { status: xhr.status, statusText: mensaje } );
+                    }
+                }
+            });
+            xhr.open( 'DELETE', `${URL}/${id}` );
+            xhr.setRequestHeader( 'Content-type', 'application/json;charset=utf-8' );
+            xhr.send( );
+        });
+
+    } catch ( err ) {
+        throw { status: err.status, statusText: err.statusText };
+    }
+}
+
+export function modificarMascota(mascota){
+    try {
+        let id = mascota.id;
+            mascota.precio = parseInt(mascota.precio);
+            delete mascota.id;
         return new Promise( async ( resolve, reject ) => {
             const xhr = new XMLHttpRequest();
     
@@ -145,10 +126,9 @@ export function bajaMascotaXhr(id){
                     }
                 }
             });
-    
-            xhr.open( 'DELETE', `${URL}/${id}` );
+            xhr.open( 'PUT', `${URL}/${id}` );
             xhr.setRequestHeader( 'Content-type', 'application/json;charset=utf-8' );
-            xhr.send( );
+            xhr.send(JSON.stringify(mascota)); 
         });
 
     } catch ( err ) {
@@ -156,7 +136,7 @@ export function bajaMascotaXhr(id){
     }
 }
 
-
+/* 
 export function modificarMascota(mascota){
     let id = mascota.id;
     mascota.precio = parseInt(mascota.precio);
@@ -183,7 +163,7 @@ export function modificarMascota(mascota){
         console.error(err.status);
     })
 
-}
+}*/
 
 
 export function actualizarLista(listaMascotas){
@@ -198,7 +178,6 @@ export function actualizarLista(listaMascotas){
 
 
 export async function buscarMascota(id){
-
     let lista  = await obtenerMascotasXhr();
     lista.forEach(element => {
         if(element['id'] == id){
@@ -216,7 +195,6 @@ export async function buscarMascota(id){
 
 export function ocultarBotones(){
     const btns = document.getElementsByTagName('button');
-
     for (let index = 0; index < btns.length; index++) {
         btns[index].classList.toggle('ocultarBtn');
     }
@@ -224,20 +202,15 @@ export function ocultarBotones(){
 
 
 export function promedio(filtro, lista){
-
     let media;     
-
     if(filtro != "todos"){
-
         const listaFiltrada = lista.filter(mascota => mascota.animal == filtro);
-        console.log(listaFiltrada);
-
+        //console.log(listaFiltrada);
         const suma = listaFiltrada.reduce( (previo, actual)=>{
             return previo + actual.precio;
         }, 0);
     
         media = suma / listaFiltrada.length;
-    
         actualizarLista(listaFiltrada);
     }else{
         const suma = lista.reduce( (previo, actual)=>{
@@ -245,7 +218,6 @@ export function promedio(filtro, lista){
         }, 0);
     
         media = suma / lista.length;
-    
         actualizarLista(lista);
     }
     return media;
@@ -255,63 +227,3 @@ export function promedio(filtro, lista){
 
 
 
-
-
-
-/*
-export function obtenerMascotas(){
-
-    return fetch(URL) // GET por default
-    .then((response)=>{
-        if(!response.ok) return Promise.reject(response); //retorna una promesa fallida
-        return response.json(); //devuelve una promesa que es no bloqueante
-    })
-    .then((data)=>{
-        const mascotas = [];
-
-        data.forEach(element => {
-            const mascotaOrdenada = new Anuncio_Mascota(
-                element.id,
-                element.titulo,
-                element.descripcion,
-                element.precio,
-                element.animal,
-                element.raza,
-                element.fecha,
-                element.vacuna
-            );
-            mascotas.push(mascotaOrdenada);
-        });
-        return mascotas;
-    })
-    .catch((err)=>{
-        console.error(err.status);
-    })
-}
-*/
-
-
-
-/*
-export function bajaMascota(id){
-    const config = {
-        method: 'DELETE',
-        headers: {
-            "Content-type": "application/json;charset=utf-8"
-        }
-    }
-
-    fetch(URL + id, config) //PUT con configuracion y datos
-    .then((response)=>{
-        if(!response.ok) return Promise.reject(response); //retorna una promesa fallida
-        return response.json(); //devuelve una promesa que es no bloqueante
-    })
-    .then(mascotaEliminada=>{
-        console.log("ENTRE A ELIMINAR ", mascotaEliminada);
-        return mascotaEliminada
-    })
-    .catch((err)=>{
-        console.error(err.status);
-    })
-}
-*/
